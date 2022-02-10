@@ -1,0 +1,73 @@
+float cameraX,cameraY,cameraZ;
+float deg1,pdeg1,deg2;
+void setup(){
+  size(800,800,P3D);
+  cameraX=100;
+  cameraY=-500;
+  cameraZ=500;
+  camera(cameraX,cameraY,cameraZ,0,150,0,0,1,0);
+}
+ 
+void draw(){
+  
+  background(204);
+  
+  
+  box(50,300,50);
+  
+  translate(0,-125,50);
+  rotateZ(-PI/6);
+  if(keyPressed){
+  if(key=='g'){
+    pdeg1++;
+    if(0<=pdeg1||pdeg1<=120)deg1=pdeg1;
+    if(120<pdeg1)deg1=240-pdeg1;
+    if(pdeg1>240)pdeg1=pdeg1-240;
+  }
+  }
+  rotateZ(-deg1*PI/180);
+  translate(125,0,0);
+  box(300,50,50);
+  
+  translate(125,0,0);
+  rotateZ(PI/3); 
+  if(keyPressed){
+  if(key=='g'){
+    pdeg1++;
+    if(0<=pdeg1||pdeg1<=120)deg1=pdeg1;
+    if(120<pdeg1)deg1=240-pdeg1;
+    if(pdeg1>240)pdeg1=pdeg1-240;
+  }
+  }
+  rotateZ(-deg1*PI/180);
+  translate(125,0,-50);
+  box(300,50,50);
+  
+  translate(162.5,0,0);
+    if(keyPressed){
+      if(key=='1'){
+        if(deg2<=180)deg2++;
+        rotateX(PI*deg2/500000); 
+      }
+
+    }
+      else deg2--;  
+         if(deg2<0)deg2=0;
+         rotateX(PI*deg2/180);
+        box(25,50,150);
+        
+  translate(37.5,0,62.5);
+  box(50,50,25);
+  
+ 
+  
+  if(keyPressed){
+    if(keyCode==LEFT)cameraX-=10;
+    if(keyCode==RIGHT)cameraX+=10;
+    if(keyCode==UP)cameraY-=10;
+    if(keyCode==DOWN)cameraY+=10;
+    if(keyCode==SHIFT)cameraZ-=10;
+    if(keyCode==CONTROL)cameraZ+=10;
+  }
+   camera(cameraX,cameraY,cameraZ,0,150,0,0,1,0);
+}
